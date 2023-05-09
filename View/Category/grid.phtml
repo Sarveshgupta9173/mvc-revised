@@ -1,0 +1,43 @@
+<?php 
+
+$result = $this->categories->getData();
+
+?>
+<div>
+	<table class="tc">
+		<tr>
+			<td class="heading"> MANAGE CATEGORIES</td>
+			<td> <a href="<?php echo $url->getUrl('add','category')  ?>" class="btn btn-primary" >Add Category</a> </td>
+		</tr>
+	</table>
+</div>
+<table border="1" cellspacing="0" class="tc table table-striped table-bordered">
+	<tr style="height: 30px; font-size: 18px;">
+		<th>Category_id</th>
+		<th>name</th>
+		<th>Description</th>
+		<th>status</th>
+		<th>created_at</th>
+		<th>updated_at</th>
+		<th>EDIT</th>
+		<th>DELETE</th>
+	</tr>
+
+	<?php 
+	foreach ($result as $category):
+		?>
+		<tr class="center">
+			<td><?php echo $category->category_id; ?></td>
+			<td><?php echo $category->name; ?></td>
+			<td><?php echo $category->description; ?></td>
+			<td><?php echo $category->status; ?></td>
+			<td><?php echo $category->created_at; ?></td>
+			<td><?php echo $category->updated_at; ?></td>
+			<td><a href="<?php echo $url->getUrl('edit','category',['id'=>$category->category_id]); ?>">Edit</td>
+			<td><a href="<?php echo $url->getUrl('delete','category',['id'=>$category->category_id]); ?>">Delete
+			</td>
+		</tr>
+		<?php 
+		endforeach;
+		?>
+</table>

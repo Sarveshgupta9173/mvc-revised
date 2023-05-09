@@ -1,0 +1,87 @@
+<?php 
+$result = $this->getData();
+?>
+   <form action="<?php echo $url->getUrl('save','vendor'); ?>" method="post">
+      <table class="tc">
+         <tr>
+            <td class="heading">EDIT VENDOR</td>
+            <td>
+               <!-- <a href="<?php echo $url->getUrl('grid','vendor'); ?>">Cancel </a> -->
+            </td>
+            <td>
+               <button type="submit" class="btn btn-success ms-5">SAVE</button>
+            </td>
+         </tr>
+      </table>
+      <br>
+      <table border="1" cellspacing="0"  class="table table-striped table-bordered">
+            <tr>
+               <td class="tth"> Vendor Id</td>
+               <td>
+                  <input type="number" placeholder="vendor_id" value="<?php echo $result->vendor_id; ?>">
+               </td>
+            </tr>
+            <td class="tth"> first NAME</td>
+            <td>
+               <input type="text" name="vendor[fname]" placeholder="first name" value="<?php echo $result->fname;?>">
+            </td>
+         </tr>
+         <tr>
+            <td class="tth"> last NAME</td>
+            <td>
+               <input type="text" name="vendor[lname]" placeholder="lastname" value="<?php echo $result->lname; ?>">
+            </td>
+         </tr>
+         <tr>
+            <td class="tth">EMAIL</td>
+            <td>
+               <input type="email" name="vendor[email]" placeholder="email" value="<?php echo $result->email; ?>">
+            </td>
+         </tr>
+         <tr>
+            <td class="tth">GENDER</td>
+            <td>
+               <input type="radio" name="vendor[gender]"  value="male"<?php if($result->gender == "male"){ echo "checked";}   ; ?> >Male
+               <input type="radio" name="vendor[gender]" value="female"<?php if($result->gender == "female"){ echo "checked";}   ; ?>> Female
+               <input type="radio" name="vendor[gender]" value="others"<?php if($result->gender == "others"){ echo "checked";}   ; ?> >Others
+            </td>
+         </tr>
+         <tr>
+            <td class="tth">COMPANY</td>
+            <td>
+               <input type="text" name="vendor[company]" placeholder="company" value="<?php echo $result->company; ?>">
+            </td>
+         </tr>
+                   
+       </table>
+
+
+      <table border="1" cellspacing="0" class="table table-striped table-bordered" >
+         <tr>
+            <th colspan="2">Address</th>
+         </tr>
+         <tr>
+            <td>Address </td>
+            <td><input type="text" name="address[address]" value="<?php echo $result->address; ?>"></td>
+         </tr>
+         <tr>
+            <td>country</td>
+            <td><input type="text" name="address[country]" value="<?php echo $result->country; ?>">  </td>
+         </tr>
+         <tr>
+            <td>state</td>
+            <td><input type="text" name="address[state]" value="<?php echo $result->state;?>">  </td>
+         </tr>
+         <tr>
+            <td>city</td>
+            <td><input type="text" name="address[city]" value="<?php echo $result->city; ?>">  </td>
+
+         </tr>
+         <tr>
+            <td>zipcode</td>
+            <td><input type="number" name="address[zipcode]" value="<?php echo $result->zipcode; ?>">  </td>
+
+         </tr>
+     </table>
+</form>
+

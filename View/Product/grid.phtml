@@ -1,0 +1,41 @@
+<?php 
+	$result = $this->getCollection();
+?>
+
+<div>
+	<table class="tc">
+		<tr>
+			<td class="heading"><h3> MANAGE PRODUCTS</h3></td>
+			<td>
+				 <a href="<?php print_r($url->getUrl('add','product'));  ?>"  class="btn btn-primary" >Add Product</a> 
+			</td>
+		</tr>
+	</table>
+</div>
+<table border="1" cellspacing="0" class="tc table table-striped table-bordered ">
+	<tr style="height: 30px; font-size: 18px;" >
+		<th>product_id</th>
+		<th>name</th>
+		<th>cost</th>
+		<th>price</th>
+		<th>quantity</th>
+		<th>created_at</th>
+		<th>updated_at</th>
+		<th>EDIT</th>
+		<th>DELETE</th>
+	</tr>
+
+	<?php foreach($result->getData() as $row): ?>
+		<tr class="center">
+			<td><?php echo $row->product_id; ?></td>
+			<td><?php echo $row->name; ?></td>
+			<td><?php echo $row->cost; ?></td>
+			<td><?php echo $row->price; ?></td>
+			<td><?php echo $row->quantity; ?></td>
+			<td><?php echo $row->created_at; ?></td>
+			<td><?php echo $row->updated_at; ?></td>
+			<td><a href="<?php print_r($url->getUrl('edit','product',['id'=>$row->product_id])) ;?>">Edit</td>
+			<td><a href="<?php print_r($url->getUrl('delete','product',['id'=>$row->product_id])) ;  ?>">Delete</td>
+		</tr>
+	<?php endforeach; ?>
+</table>

@@ -1,0 +1,45 @@
+<?php
+
+$rows = $this->getCollection();
+
+?>
+<div class="row p-3">
+    <div class="col-10">
+        <h2><?php echo $this->getTitle() ?></h2>
+    </div>
+    <div class="col-2">
+    	<?php foreach ($this->getButtons() as $key => $button) :?>
+        <a class="btn btn-primary" href="<?php echo $button['url'] ?>"><?php echo $button['title'] ?></a>
+    	<?php endforeach; ?>
+    </div>
+</div>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+        	<?php foreach ($this->getColumns() as $column) :?>
+        	<th><?php echo $column['title'] ?></th>
+        	<?php endforeach; ?>
+        	<?php foreach ($this->getActions() as $action) :?>
+        	<th><?php echo $action['title'] ?></th>
+        	<?php endforeach; ?>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if($rows->count()>0): ?>
+        <?php foreach($rows->getData() as $row): ?>
+        <tr>
+            <?php foreach ($this->getColumns() as $key => $column) :?>
+        	<td><?php echo $this->getColumnValue($row, $key) ?></td>
+        	<?php endforeach; ?>
+        	<?php foreach ($this->getActions() as $key => $action) :?>
+        	<td><a href="<?php $method = $action['method']; echo $this->$method($row, $key) ?>"><?php echo $action['title'] ?></a></td>
+        	<?php endforeach; ?>
+        </tr>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <tr>
+            <td colspan="7">No records available.</td>
+        </tr>
+    <?php endif; ?>
+    </tbody>
+</table>

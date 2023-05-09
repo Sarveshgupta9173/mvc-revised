@@ -1,0 +1,56 @@
+<form action="<?php echo $url->getUrl('save','salesman'); ?>" method="post">
+	<table class="tc">
+		<tr>
+			<td><h3> SALESMAN</h3></td>
+			<td>
+				<a href="<?php echo $url->getUrl('grid','salesman'); ?> " class="btn btn-danger" >Cancel </a>
+			</td>
+			<td>
+				<button type="submit" class="btn btn-success">SUBMIT</button>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<table border="1" cellspacing="0"  class="table table-striped table-bordered">
+		<tr>
+			<td class="tth"> Salesman Id</td>
+			<td>
+				<input type="number" name="salesman[sales_id]" placeholder="Salesman_id">
+			</td>
+		</tr>
+		<tr>		
+			<td class="tth"> First name :</td>
+			<td>
+				<input type="text" name="salesman[fname]" placeholder="First name">
+			</td>
+		</tr>
+		<tr>
+			<td class="tth"> Last name :</td>
+			<td>
+				<input type="text" name="salesman[lname]" placeholder="Last name">
+			</td>
+		</tr>
+		<tr>
+			<td class="tth">Email :</td>
+			<td>
+				<input type="email" name="salesman[email]" placeholder="Email">
+			</td>
+		</tr>
+		<tr>
+			<td class="tth">Gender :</td>
+			<td>
+				<input type="radio" name="salesman[gender]" value="Male" checked>Male
+				<input type="radio" name="salesman[gender]" value="	Female">Female
+				<input type="radio" name="salesman[gender]" value="Others">Others
+			</td>
+		</tr>
+		<tr>
+			<td class="tth">Status :</td>
+			<td><select name="salesman[status]">
+				<option value="active">Active</option>
+				<option value="inactive">Inactive</option>
+			</select>
+			</td>
+		</tr>
+	</table>
+</form>

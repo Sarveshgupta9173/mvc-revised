@@ -1,0 +1,46 @@
+<?php 
+$row = $this->getData();
+?>
+<form action="<?php echo $url->getUrl('save','category'); ?>" method="POST">
+   <table class="tc">
+      <tr>
+         <td class="heading">EDIT CATEGORIES</td>
+         <td>
+            <!-- <a href="<?php echo $url->getUrl('grid','category'); ?>">Cancel </a> -->
+         </td>
+         <td>
+            <input type="submit" name="button" class="btn btn-success ms-5" >
+         </td>
+      </tr>
+   </table>
+   <br>
+   <table border="1" cellspacing="0"  class="table table-striped table-bordered">
+     
+         <td class="tth"> Category_id</td>
+         <td>
+            <input type="number" name="category[category_id]" placeholder="Category_id" value="<?php echo $row->category_id; ?>">
+         </td>
+      </tr>
+      <tr>
+         <td class="tth"> Name</td>
+         <td>
+            <input type="text" name="category[name]" placeholder="name" value="<?php echo $row->name; ?>" >
+         </td>
+      </tr>
+      <tr>
+         <td class="tth">Description</td>
+         <td>
+            <input type="text" name="category[description]" placeholder="Descritpion" value="<?php echo $row->description; ?>">
+         </td>
+      </tr>
+      <tr>
+         <td class="tth">STATUS</td>
+         <td><select name="category[status]" >
+            <option value="active" <?php if($row->status == "active"){echo "selected";} ?> >Active</option>
+            <option value="inactive" <?php if($row->status == "inactive"){echo "selected";} ?> >InActive</option>
+            </select>
+         </td> 
+      </tr>
+   </table>
+</form>
+

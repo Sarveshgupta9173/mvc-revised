@@ -1,0 +1,46 @@
+<?php 
+
+$result = $this->customers->getData();;
+
+?>
+<div>
+	<table class="tc">
+		<tr>
+			<td class="heading"><h3> MANAGE CUSTOMER</h3></td>
+			<td> <a href="<?php echo $url->getUrl('add','customer'); ?> " class="btn btn-success ms-5">Add Customer</a></td>
+		</tr>
+	</table>
+</div>
+<table border="1" cellspacing="0" class="tc table table-striped table-bordered">
+	<tr style="height: 30px; font-size: 18px;">
+		<th>Customer_id</th>
+		<th>first name</th>
+		<th>last name</th>
+		<th>email</th>
+		<th>gender</th>
+		<th>mobile</th>
+		<th>created_at</th>
+		<th>updated_at</th>
+		<th>EDIT</th>
+		<th>DELETE</th>
+	</tr>
+
+	<?php 
+	foreach ($result as $row ):
+		?>
+		<tr class="center">
+			<td><?php echo $row->customer_id; ?></td>
+			<td><?php echo $row->fname; ?></td>
+			<td><?php echo $row->lname; ?></td>
+			<td><?php echo $row->email; ?></td>
+			<td><?php echo $row->gender; ?></td>
+			<td><?php echo $row->mobile; ?></td>
+			<td><?php echo $row->created_at; ?></td>
+			<td><?php echo $row->updated_at; ?></td>
+			<td><a href="<?php echo $url->getUrl('edit','customer',['id'=>$row->customer_id]); ?>">Edit</td>
+				<td><a href="<?php echo $url->getUrl('delete','customer',['id'=>$row->customer_id]); ?> ?>">Delete</td>
+				</tr>
+				<?php 
+			endforeach;
+			?>
+</table>

@@ -1,0 +1,50 @@
+	<form action="<?php echo $url->getUrl('save','category'); ?>" method="post">
+		<table class="tc">
+			<tr>
+				<td class="heading"> ADD CATEGORIES</td>
+				<td>
+					<a href="<?php echo $url->getUrl('grid','category'); ?>">Cancel </a>
+				</td>
+				<td>
+					<button type="submit">Submit</button>
+				</td>
+			</tr>
+		</table>
+		<table border="1" cellspacing="0"  class="tc">
+			
+			<td class="tth"> Category_id</td>
+			<td>
+				<input type="number" name="category[category_id]" placeholder="Category_id">
+			</td>
+		</tr>
+		<tr>
+			<td class="tth"> Name</td>
+			<td>
+				<input type="text" name="category[name]" placeholder="name">
+			</td>
+		</tr>
+		<tr>
+			<td class="tth">Parent</td>
+			<td><select name="">
+				<option  value="1" >1</option>
+				<option  value="2">2</option>
+			</select></td>  
+		</tr>
+		<tr>
+			<td class="tth">Descritpion</td>
+			<td>
+				<input type="text" name="category[description]" placeholder="Descritpion">
+			</td>
+		</tr>
+		<tr>
+			<td class="tth">STATUS</td>
+			<td>
+				<select name="category[status]">
+					<option  value="active" >Active</option>
+					<option  value="inactive">Inactive</option>
+				</select>
+			</td>  
+		</tr>
+	</table>
+</form>
+

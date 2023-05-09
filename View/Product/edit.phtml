@@ -1,0 +1,51 @@
+<?php
+$result = $this->getCollection()->getData();
+?>
+
+<form action="<?php print_r($url->getUrl('save','product')); ?>" method="POST">
+	<table class="tc">
+		<tr>
+			<td class="heading"> EDIT PRODUCT </td>
+			<td>
+				<!-- <a href="<?php print_r($url->getUrl('grid','product')); ?>"> Cancel </a> -->
+			</td>
+			<td>
+				<button type="submit" class="btn btn-success ms-5">UPDATE</button>
+			</td>
+		</tr>
+	</table>
+	<?php ?>
+	<table border="1" cellspacing="0"  class="table table-bordered">
+			<tr>
+				<td class="tth">product id</td>
+				<td>
+					<input type="number" name="product[product_id]" value="<?php echo $result->product_id;  ?>">
+				</td>
+			</tr>
+			<tr>
+				<td class="tth">NAME</td>
+				<td>
+					<input type="text" name="product[name]" value="<?php echo $result->name;  ?>">
+				</td>
+			</tr>
+			<tr>
+				<td class="tth">COST</td>
+				<td>
+					<input type="number" name="product[cost]" value="<?php echo $result->cost;  ?>">
+				</td>
+			</tr>
+			<tr>
+				<td class="tth">PRICE</td>
+				<td>
+					<input type="number" name="product[price]" value="<?php echo $result->price;  ?>">	
+				</td>
+			</tr>
+			<tr>
+				<td class="tth">QUANTITY</td>
+				<td>
+					<input type="number" name="product[quantity]" value="<?php echo $result->quantity;  ?>">
+				</td>
+			</tr>
+				
+	</table>
+</form>

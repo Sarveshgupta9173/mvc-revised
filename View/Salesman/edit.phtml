@@ -1,0 +1,60 @@
+<?php 
+$row = $this->getData();
+?>
+
+<form action="<?php echo $url->getUrl('save','salesman'); ?>" method="post">
+   <table class="tc">
+      <tr>
+         <td> <h3>EDIT SALESMAN</h3></td>
+         <td>
+            <!-- <a href="<?php echo $url->getUrl('grid','salesman'); ?>" class="btn btn-primary">Cancel </a> -->
+         </td>
+         <td>
+            <button type="submit" class="btn btn-success">UPDATE</button>
+         </td>
+      </tr>
+   </table>
+   <br>
+   <table border="1" cellspacing="0"  class="table table-striped table-bordered">
+         <tr>
+            <td class="tth"> salesman Id</td>
+            <td>
+               <input type="number" name="salesman[sales_id]" placeholder="salesman_id" value="<?php echo $row->sales_id; ?>">
+            </td>
+         </tr>
+         <tr>
+            <td class="tth"> first NAME</td>
+            <td>
+               <input type="text" name="salesman[fname]" placeholder="first name" value="<?php echo $row->fname; ?>">
+            </td>
+         </tr>
+         <tr>
+            <td class="tth"> last NAME</td>
+            <td>
+               <input type="text" name="salesman[lname]" placeholder="lastname" value="<?php echo $row->lname; ?>">
+            </td>
+         </tr>
+         <tr>
+            <td class="tth">EMAIL</td>
+            <td>
+               <input type="email" name="salesman[email]" placeholder="email" value="<?php echo $row->email; ?>">
+            </td>
+         </tr>
+         <tr>
+            <td class="tth">GENDER</td>
+            <td>
+               <input type="radio" name="salesman[gender]"  value="male"<?php if($row->gender == "male"){ echo "checked";}   ; ?> >Male
+               <input type="radio" name="salesman[gender]" value="female"<?php if($row->gender == "female"){ echo "checked";}   ; ?>> Female
+               <input type="radio" name="salesman[gender]" value="others"<?php if($row->gender == "others"){ echo "checked";}   ; ?> >Others
+            </td>
+         </tr>
+         <tr>
+            <td class="tth">STATUS</td>
+            <td><select name="salesman[status]" >
+               <option value="active" <?php if($row->status == "active"){ echo "selected";} ?>>Active</option>
+               <option value="inactive"<?php if($row->status == "inactive"){ echo "selected";} ?>>Inactive</option>
+            </select>
+            </td>
+         </tr>
+   </table>
+</form>

@@ -1,0 +1,47 @@
+
+		<form action="<?php print_r($url->getUrl('save','product')); ?>" method="post">
+			<table class="tc">
+				<tr>
+					<td class="heading"><h3> ADD PRODUCT</h3></td>
+					<td>
+						<a href="Index.php?a=grid&c=product">Cancel </a>
+					</td>
+					<td>
+						<button type="submit">SUBMIT</button>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<table border="1" cellspacing="0"  class="tc">
+				<tr>
+					<td class="tth">product_id</td>
+					<td>
+						<input type="number" name="product[product_id]" placeholder="id">
+					</td>
+				</tr>
+				<tr>
+					<td class="tth">NAME</td>
+					<td>
+						<input type="text" name="product[name]" placeholder="name">
+					</td>
+				</tr>
+				<tr>
+					<td class="tth">COST</td>
+					<td>
+						<input type="text" name="product[cost]" placeholder="cost">
+					</td>
+				</tr>
+				<tr>
+					<td class="tth">PRICE</td>
+					<td>
+						<input type="text" name="product[price]" placeholder="price">
+					</td>
+				</tr>
+				<tr>
+					<td class="tth">QUANTITY</td>
+					<td>
+						<input type="text" name="product[quantity]" placeholder="Quantity">
+					</td>
+				</tr>	
+			</table>
+		</form>
