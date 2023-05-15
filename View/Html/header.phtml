@@ -17,11 +17,11 @@
 
 <div class="header">
 	<nav class="navbar bg-info" data-bs-theme="dark">
-				<a class=" btn btn-outline-light" href="<?php echo $url->getUrl('grid','product'); ?>">Product</a>
-				<a class="btn btn-outline-light" href="<?php echo $url->getUrl('grid','category'); ?>">Category</a>
-				<a class="btn btn-outline-light" href="<?php echo $url->getUrl('grid','customer'); ?>">Customer</a>
-				<a class="btn btn-outline-light" href="<?php echo $url->getUrl('grid','vendor'); ?>">Vendor</a>
-				<a class="btn btn-outline-light" href="<?php echo $url->getUrl('grid','salesman'); ?>">Salesman</a>
+				<a class=" btn btn-outline-light" href="<?php echo $url->getUrl('grid','product',['p'=> 1]); ?>">Product</a>
+				<a class="btn btn-outline-light" href="<?php echo $url->getUrl('grid','category',['p'=> 1]); ?>">Category</a>
+				<a class="btn btn-outline-light" href="<?php echo $url->getUrl('grid','customer',['p'=> 1]); ?>">Customer</a>
+				<a class="btn btn-outline-light" href="<?php echo $url->getUrl('grid','vendor',['p'=> 1]); ?>">Vendor</a>
+				<a class="btn btn-outline-light" href="<?php echo $url->getUrl('grid','salesman',['p'=> 1]); ?>">Salesman</a>
 	</nav>
 </div>
 <?php
@@ -30,7 +30,6 @@ require_once 'Model/Core/Message.php';
 
 $msgheader = new Model_Core_Message();
 $msgs = $msgheader->getMessage();
-// print_r($msgs);
 if($msgs){
 	foreach($msgs as $type=>$message){
 		echo "<p class='{$type}'>";

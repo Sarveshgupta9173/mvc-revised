@@ -28,10 +28,6 @@ class Controller_Vendor extends Controller_Core_Action
 	}
 
 	public function gridAction(){
-
-		$sql = "SELECT * FROM `vendor`";
-		$vendors = Ccc::getModel('Vendor')->fetchAll($sql);
-		Ccc::register('vendors',$vendors);
 		
 		$layout = $this->getLayout();
 		$grid = $layout->createBlock('Vendor_Grid');

@@ -26,7 +26,7 @@ class Model_Core_Pager
 	public function getCurrentPage()
 	{
 		$request = Ccc::getModel('Core_Request');
-		$currentPage = $request->getParams('p');
+		$currentPage = $request->getParams('p',1);
 		return $currentPage;
 	}
 
@@ -50,7 +50,12 @@ class Model_Core_Pager
 			$this->previous = 1;
 		}
 
+		if($this->numberOfPages == 1){
+			$this->startLimit = 0;
+		}else{
 		$this->startLimit = ($this->getCurrentPage()-1)*$this->recordPerPage;
+		}
+
 
 		
 		return $this;

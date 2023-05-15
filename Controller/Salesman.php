@@ -4,11 +4,7 @@ class Controller_Salesman extends Controller_Core_Action
 {
 
 	public function gridAction(){
-
-		$sql = "SELECT * FROM `salesman`";
-		$salesman = Ccc::getModel('Salesman')->fetchAll($sql);
-		Ccc::register('salesman',$salesman);
-
+		
 		$layout = $this->getLayout();
 		$grid = $layout->createBlock('Salesman_Grid');
 		$layout->getChild('content')->addChild('grid',$grid);

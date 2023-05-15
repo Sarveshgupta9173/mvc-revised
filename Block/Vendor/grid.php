@@ -11,8 +11,11 @@ class Block_Vendor_Grid extends Block_Core_Template
 
 	public function getCollection()
 	{
-
-		$vendors = Ccc::getRegistry('vendors');
+		$query = "SELECT COUNT(vendor_id) FROM `vendor`";
+		$count = Ccc::getModel('Core_Adapter')->fetchOne($query);
+		$pager = $this->getPager()->setTotalRecords($count)->calculate();
+		$sql = "SELECT * FROM `vendor` LIMIT $pager->startLimit,$pager->recordPerPage";
+		$vendors = Ccc::getModel('Vendor')->fetchAll($sql);
 		$this->setData(['vendors'=>$vendors]);
 		return $this;
 	}
