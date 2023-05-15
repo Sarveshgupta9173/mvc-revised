@@ -63,5 +63,19 @@ class Model_Core_Adapter{
 		}
 		return array_combine($column1, $column2);
 	}
+
+	public function fetchOne($query)
+	{
+		$connect = $this->connect();
+		$result = $connect->query($query);
+		if (!$result) {
+			return false;
+		}
+		$row = $result->fetch_array();
+		if (!array_key_exists(0, $row)) {
+			return NULL;
+		}
+		return $row[0];
+	}
 }
 ?>

@@ -29,7 +29,10 @@ class Controller_Customer extends Controller_Core_Action
 	}
 
 	public function gridAction(){
-		$sql = "SELECT * FROM `customer`";
+		$query = "SELECT COUNT(customer_id) FROM `customer`";
+		$count = Ccc::getModel('Core_Adapter')->fetchOne($query);
+		$pager = Ccc::getModel('Core_Pager')->setTotalRecords($count)->calculate();
+		$sql = "SELECT * FROM `customer` LIMIT $pager->startLimit,$pager->recordPerPage";
 		$customers = Ccc::getModel('Customer')->fetchAll($sql);
 		Ccc::register('customers',$customers);
 

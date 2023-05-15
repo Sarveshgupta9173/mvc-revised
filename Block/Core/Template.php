@@ -4,6 +4,7 @@ class Block_Core_Template extends Model_Core_View
 {
 	protected $children = [];
 	protected $layout = null;
+	protected $pager = null;
 
 	public function setLayout(Block_Core_Layout $layout)
 	{
@@ -20,6 +21,23 @@ class Block_Core_Template extends Model_Core_View
 		$this->setLayout($layout);
 		return $layout;
 	}
+
+	public function setPager(Model_Core_Pager $pager)
+	{
+		$this->pager = $pager;
+		return $this;
+	}
+
+	public function getPager()
+	{
+		if($this->pager){
+			return $this->pager;
+		}
+		$pager = new Model_Core_Pager();
+		$this->setpager($pager);
+		return $pager;
+	}
+
 
 	public function __construct()
 	{

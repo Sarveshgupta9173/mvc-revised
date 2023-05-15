@@ -3,14 +3,6 @@
 class Controller_Product extends Controller_Core_Action
 {
 
-	public function testAction()
-	{
-		$pager = Ccc::getModel('Core_Pager');
-		echo "<pre>";
-		$pager->setTotalRecords(55);
-		print_r($pager->calculate());
-	}
-
 	public function addAction(){
 		$layout = $this->getLayout();
 		$add = $layout->createBlock('Product_Add');
@@ -41,8 +33,6 @@ class Controller_Product extends Controller_Core_Action
 
 	public function saveAction()
 	{
-		
-
 		try {
 			$request = $this->getRequest();
 			$data = $request->getPost("product");

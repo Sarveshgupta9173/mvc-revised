@@ -44,3 +44,28 @@ $result = $this->customers->getData();;
 			endforeach;
 			?>
 </table>
+<?php $pager = $this->getPager();?>
+	<table width="60%">
+		<tr>
+			<td><a href="index.php?a=grid&c=customer&p=<?php echo $pager->start; ?>" class="btn btn-primary  " id="start">START</a> </td>
+			<td><a href="index.php?a=grid&c=customer&p=<?php echo $pager->previous; ?>" class="btn btn-primary  " id="previous">PREV</a> </td>
+			<td><a href="index.php?a=grid&c=customer&p=<?php echo $pager->currentPage; ?>" class="btn btn-primary  ">CURRENT</a></td>
+			<td><a href="index.php?a=grid&c=customer&p=<?php echo $pager->next; ?>" class="btn btn-primary  " id="next">NEXT</a> </td>
+			<td><a href="index.php?a=grid&c=customer&p=<?php echo $pager->end; ?>" class="btn btn-primary  " id="end">END</a> </td>
+			<p> Showing <strong><?php echo $pager->getCurrentPage(); ?></strong> of <strong><?php echo $pager->numberOfPages; ?></strong> Pages </p>
+		</tr>
+	</table>
+</table>
+<script type="text/javascript">
+		$(document).ready(function(){
+			if(<?php echo $pager->getCurrentPage() ?> === 1){
+			$('#start').addClass('disabled');
+			$('#previous').addClass('disabled');
+			}
+
+			if(<?php echo $pager->getCurrentPage(); ?> === <?php echo $pager->numberOfPages; ?>){
+			$('#end').addClass('disabled');
+			$('#next').addClass('disabled');
+			}
+		});
+	</script>
