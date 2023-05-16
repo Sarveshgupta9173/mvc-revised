@@ -1,21 +1,22 @@
-<?php $rows = $this->getCollection(); ?>
-<?php require_once 'View/html/header.phtml';?>
-<div class="title9">
+<?php 
+$rows = $this->getCollection(); ?>
+<?php require_once 'View/Html/header.phtml';?>
+<div >
     <div>
-        <?php echo $this->getTitle();?>
+        <h3><?php echo $this->getTitle();?></h3>
     </div>
     <div>
         <?php foreach ($this->getButtons() as $key => $button): ?>
-        <a type="button" class="btn btn-primary" href="<?php echo $button['url'];?>"><?php echo $button['title']?></a>
+        <a type="button" class="btn btn-outline-primary" href="<?php echo $button['url'];?>"><?php echo $button['title']?></a>
         <?php endforeach;?>
     </div>
 </div>
-<table class="table table-striped">
+<table class="table table-striped table-bordered">
     <tr>
-        <?php foreach ($this->getColumns() as $key => $column): ?>
+        <?php foreach ($this->getColumns() as $column): ?>
         <td><?php echo $column['title'];?></td>
         <?php endforeach;?>
-        <?php foreach ($this->getActions() as $key => $action): ?>
+        <?php foreach ($this->getActions() as $action): ?>
         <td><?php echo $action['title'];?></td>
         <?php endforeach;?>
     </tr>
@@ -24,33 +25,41 @@
         <td>No records available.</td>
     </tr>
     <?php else:?>
-    <?php foreach ($rows as $row): ?>
+    <?php foreach ($rows->getData() as $row): ?>
      <tr>
         <?php foreach ($this->getColumns() as $key => $column): ?>
         <td> <?php echo $this->getColumnValue($row,$key); ?></td>
         <?php endforeach;?>
         <?php foreach ($this->getActions() as $key => $action): ?>
-        <td><a class="btn btn-dark" href="<?php $method = $action['method']; echo $this->$method($row,$key);?>"><?php echo $action['title']?></td>
+        <td><a class="btn btn-outline-primary" href="<?php $method = $action['method']; echo $this->$method($row,$key);?>"><?php echo $action['title']?></td>
         <?php endforeach;?>
      </tr>
     <?php endforeach ?>
     <?php endif;?>
 
-<nav aria-label="Page navigation example">
-    <ul class="pagination">
-        <li class="page-item"><a class="page-link" <?php if ($this->getPager()->getStart() == 0) {
-            echo "style='pointer-events:none'"; }?>
-            href="<?php echo $this->getUrl('grid',null,['p' => $this->getPager()->getStart()]) ?>">Start</a></li>
-        <li class="page-item"><a class="page-link" <?php if ($this->getPager()->getPrevious() == 0) {
-            echo "style='pointer-events:none'"; } ?> 
-            href="<?php echo $this->getUrl('grid',null,['p' => $this->getPager()->getprevious()]) ?>">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="<?php echo $this->getUrl('grid',null,['p' => $this->getPager()->getcurrentPage()]) ?>"><?php echo $this->getPager()->getCurrentPage() ?></a></li>
-        <li class="page-item"><a class="page-link" <?php if ($this->getPager()->getNext() == 0) {
-            echo "style='pointer-events:none'"; } ?>
-            href="<?php echo $this->getUrl('grid',null,['p' => $this->getPager()->getnext()]) ?>">Next</a></li>
-        <li class="page-item"><a class="page-link" <?php if ($this->getPager()->getEnd() == 0) {
-            echo "style='pointer-events:none'"; } ?>
-            href="<?php echo $this->getUrl('grid',null,['p' => $this->getPager()->getend()]) ?>">end</a></li>
-    </ul>
-</nav>
 </table>
+<?php $pager = $this->getPager(); ?>
+    <table width="60%">
+        <tr>
+            <td><a href="<?php echo $url->getUrl('grid',null,['p'=>$pager->start]); ?>" class="btn btn-primary  " id="start">START</a> </td>
+            <td><a href="<?php echo $url->getUrl('grid',null,['p'=>$pager->previous]); ?>" class="btn btn-primary  " id="previous">PREV</a> </td>
+            <td><a href="<?php echo $url->getUrl('grid',null,['p'=>$pager->currentPage]); ?>" class="btn btn-primary  ">CURRENT</a></td>
+            <td><a href="<?php echo $url->getUrl('grid',null,['p'=>$pager->next]); ?>" class="btn btn-primary  " id="next">NEXT</a> </td>
+            <td><a href="<?php echo $url->getUrl('grid',null,['p'=>$pager->end]); ?>" class="btn btn-primary  " id="end">END</a> </td>
+            <p> Showing <strong><?php echo $pager->getCurrentPage(); ?></strong> of <strong><?php echo $pager->numberOfPages; ?></strong> Pages </p>
+        </tr>
+    </table>
+</table>
+<script type="text/javascript">
+        $(document).ready(function(){
+            if(<?php echo $pager->getCurrentPage() ?> === 1){
+            $('#start').addClass('disabled');
+            $('#previous').addClass('disabled');
+            }
+
+            if(<?php echo $pager->getCurrentPage(); ?> === <?php echo $pager->numberOfPages; ?>){
+            $('#end').addClass('disabled');
+            $('#next').addClass('disabled');
+            }
+        });
+    </script>
